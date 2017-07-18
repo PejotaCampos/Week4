@@ -7,6 +7,7 @@ package tratador;
 
 import dao.TopicoDAOImpl;
 import java.util.List;
+import model.BancoDeDados;
 import model.Topico;
 
 /**
@@ -16,13 +17,13 @@ import model.Topico;
 public class TratadorTopico {
     
     public void cadastraTopico(Topico t){
-        
+        BancoDeDados.criarTopicos();
         TopicoDAOImpl topicoManager = new TopicoDAOImpl();
         topicoManager.inserir(t);
     }
     
     public List<Topico> topicos(){
-     
+        BancoDeDados.criarTopicos();
         TopicoDAOImpl topicoManager = new TopicoDAOImpl();
         List<Topico> topicos = topicoManager.topicos();
         return topicos;

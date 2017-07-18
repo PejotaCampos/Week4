@@ -6,11 +6,13 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Topico;
 import model.Usuario;
 import tratador.TratadorTopico;
 import tratador.TratadorUsuario;
@@ -34,12 +36,13 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         TratadorUsuario userManager = new TratadorUsuario();
-        //TratadorTopico topicoManager = new TratadorTopico();
+        TratadorTopico topicoManager = new TratadorTopico();
         Usuario u = userManager.autenticar(request.getParameter("login"), request.getParameter("senha"));
         
         if(u != null){
             request.getSession().setAttribute("dadosUsuario", u);
-            //request.getServletContext().setAttribute("listaTopicos", topicoManager.topicos());
+            List<Topico> topicos = topicoManager.topicos();
+            request.getServletContext().setAttribute("topicos", topicos );
             request.getRequestDispatcher("topicos.jsp").forward(request, response);
         }else{
             request.setAttribute("erro", "Erro na autenticação.");

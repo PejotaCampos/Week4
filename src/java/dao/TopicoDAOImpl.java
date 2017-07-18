@@ -59,12 +59,14 @@ public class TopicoDAOImpl implements TopicoDAO{
             while(rs.next())
             {
 		listaOrdenada.add(new Topico(rs.getString("titulo"), rs.getString("conteudo"), rs.getString("login"),
-                                             rs.getInt("id")));
+                                             rs.getInt("id_topico")));
             }
 			
             }catch(SQLException e){
 		throw new RuntimeException("Erro: " + e.getMessage());
             }
+        System.out.println("LISTA TOPICOS: ");
+        listaOrdenada.forEach(System.out::println);
         
 	return listaOrdenada;
     }
