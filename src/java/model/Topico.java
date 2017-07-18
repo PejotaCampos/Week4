@@ -14,11 +14,10 @@ public class Topico {
     private String titulo, conteudo, login;
     private int id;
 
-    public Topico(String titulo, String conteudo, String login, int id) {
+    public Topico(String titulo, String conteudo, String login) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.login = login;
-        this.id = id;
     }
 
     public String getTitulo() {
