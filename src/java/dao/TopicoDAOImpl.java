@@ -42,8 +42,26 @@ public class TopicoDAOImpl implements TopicoDAO{
     }
 
     @Override
-    public Topico recuperar(String login) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Topico recuperar(int id) {
+        String sql = "SELECT * FROM topico WHERE id_topico = ?";
+        Topico t = null;
+        try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
+				"postgres", "postgres")){
+			
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+       
+            while(rs.next())
+            {
+                t = new Topico(rs.getString("titulo"), rs.getString("conteudo"), rs.getString("login"));
+                t.setId(rs.getInt("id_topico"));
+            }
+			
+            }catch(SQLException e){
+		throw new RuntimeException("Erro: " + e.getMessage());
+            }
+        return t;
     }
 
     @Override

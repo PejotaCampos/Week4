@@ -22,6 +22,12 @@ public class TratadorTopico {
         topicoManager.inserir(t);
     }
     
+    public Topico recuperar(int id){
+        BancoDeDados.criarTopicos();
+        TopicoDAOImpl topicoManager = new TopicoDAOImpl();
+        return topicoManager.recuperar(id);
+    }
+    
     public List<Topico> topicos(){
         BancoDeDados.criarTopicos();
         TopicoDAOImpl topicoManager = new TopicoDAOImpl();

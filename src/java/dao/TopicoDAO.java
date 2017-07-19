@@ -18,7 +18,7 @@ public interface TopicoDAO {
     public void inserir(Topico t);
 	   
     //recupera o usuário pelo seu login
-    public Topico recuperar(String login);
+    public Topico recuperar(int id);
     
     //recupera todos os topicos do banco
     public List<Topico> topicos();

@@ -14,9 +14,10 @@
     </head>
     <body>
         <h1>Bem vindo ${dadosUsuario.nome}</h1>
+        
         <ul>
             <c:forEach var="topico" items= "${topicos}" >
-            <li>${topico.titulo}</li>
+                <li><a href="CadastroTopicoServlet?id=${topico.id}" >${topico.titulo} </a> </li>
             </c:forEach>
         </ul>
         

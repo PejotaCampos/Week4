@@ -30,6 +30,16 @@ public class CadastroTopicoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        TratadorTopico topicoManager = new TratadorTopico();
+        Topico t = topicoManager.recuperar(id);
+        request.setAttribute("titulo", t.getTitulo());
+        request.setAttribute("conteudo", t.getConteudo());
+        request.setAttribute("login", t.getLogin());
+        
+        request.getRequestDispatcher("exibeTopico.jsp").forward(request, response);
   
     }
 
@@ -39,7 +49,6 @@ public class CadastroTopicoServlet extends HttpServlet {
         
         String titulo = request.getParameter("titulo");
         String conteudo = request.getParameter("conteudo");
-        //Class user = request.getServletContext().getAttribute("dadosUsuario");
         Usuario u = (Usuario) request.getSession().getAttribute("dadosUsuario");
         String login = u.getLogin();
         TratadorTopico topicoManager = new TratadorTopico();
