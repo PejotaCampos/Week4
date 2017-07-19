@@ -53,10 +53,10 @@ public class ComentarioDAOImpl implements ComentarioDAO{
 			
             stm.setInt(1, id_topico);
 			
-            ResultSet rs = stm.executeQuery(sql);
+            ResultSet rs = stm.executeQuery();
             while(rs.next())
             {
-                Comentario c = new Comentario(rs.getString("login"),rs.getString("login"));
+                Comentario c = new Comentario(rs.getString("login"),rs.getString("comentario"));
                 c.setId_topico(id_topico);
                 c.setId_comentario(rs.getInt("id_comentario"));
                 comentarios.add(c);

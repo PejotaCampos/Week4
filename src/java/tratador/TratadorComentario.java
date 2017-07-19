@@ -6,6 +6,7 @@
 package tratador;
 
 import dao.ComentarioDAOImpl;
+import java.util.List;
 import model.BancoDeDados;
 import model.Comentario;
 
@@ -15,12 +16,18 @@ import model.Comentario;
  */
 public class TratadorComentario {
     
+    private final ComentarioDAOImpl comentarioDAO = new ComentarioDAOImpl();
+    
     public void inserir(String login, String comentario, int idTopico){
         BancoDeDados.criarComentarios();
         Comentario c = new Comentario(login,comentario);
         c.setId_topico(idTopico);
-        ComentarioDAOImpl comentarioDAO = new ComentarioDAOImpl();
+        
         comentarioDAO.inserir(c);
     }
     
+    public List<Comentario> comentarios(int idTopico){
+        BancoDeDados.criarComentarios();
+        return comentarioDAO.recuperar(idTopico);
+    }
 }

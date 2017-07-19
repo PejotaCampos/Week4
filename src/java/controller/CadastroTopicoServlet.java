@@ -6,10 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.reflect.Method;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Topico;
 import model.Usuario;
+import tratador.TratadorComentario;
 import tratador.TratadorTopico;
 
 /**
@@ -26,25 +23,22 @@ import tratador.TratadorTopico;
 @WebServlet(name = "CadastroTopicoServlet", urlPatterns = {"/CadastroTopicoServlet"})
 public class CadastroTopicoServlet extends HttpServlet {
 
+    private final TratadorTopico topicoManager = new TratadorTopico();
+    private final TratadorComentario comentarioManager = new TratadorComentario();
   
+    /*NAVEGA ATÉ A PAGINA EXIBIR TOPICOS*/
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //TODO: Pode-se passar como atributo o tópico..
         int id = Integer.parseInt(request.getParameter("id"));
-        TratadorTopico topicoManager = new TratadorTopico();
-        Topico t = topicoManager.recuperar(id);
-        request.getSession().setAttribute("topicoAtual", t);
-        //request.setAttribute("topicoId", t.getId());
-        //request.setAttribute("conteudo", t.getConteudo());
-        //request.setAttribute("login", t.getLogin());
-        
+        request.getSession().setAttribute("topicoAtual", topicoManager.recuperar(id));
+        request.getSession().setAttribute("comentariosAtuais", comentarioManager.comentarios(id));
         request.getRequestDispatcher("exibeTopico.jsp").forward(request, response);
   
     }
 
-    /*CADASTRA UM TOPICO*/
+    /*CADASTRA UM TOPICO E VAI PARA A TELA DA LISTA DE TOPICOS*/
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -53,7 +47,6 @@ public class CadastroTopicoServlet extends HttpServlet {
         String conteudo = request.getParameter("conteudo");
         Usuario u = (Usuario) request.getSession().getAttribute("dadosUsuario");
         String login = u.getLogin();
-        TratadorTopico topicoManager = new TratadorTopico();
         
         Topico t = new Topico(titulo, conteudo, login);
         topicoManager.cadastraTopico(t);
