@@ -12,8 +12,16 @@
         <title>Topico</title>
     </head>
     <body>
-        Título: <h1>${titulo}</h1>
-        Conteudo: <h1>${conteudo}</h1>
-        Login: <h1>${login}</h1>
+        <form action="ComentarioServlet" method="POST">
+            
+            Título: <h1>${topicoAtual.titulo}</h1>
+            Conteudo: <h1>${topicoAtual.conteudo}</h1>
+            Login: <h1 name="login">${topicoAtual.login}</h1>
+        
+            <div hidden="true" name="idT">${topicoAtual.id}</div>
+            <textarea rows="4" cols="60" title="Comentário..." name="textoComentado"></textarea>
+            <input type="submit" name="comentar" value="Enviar" />
+        </form>
+        
     </body>
 </html>

@@ -14,10 +14,10 @@ import model.Topico;
  */
 public interface TopicoDAO {
     
-    //insere um novo usuário no banco de dados
+    //insere um novo tópico no banco de dados
     public void inserir(Topico t);
 	   
-    //recupera o usuário pelo seu login
+    //recupera o topico pelo seu id
     public Topico recuperar(int id);
     
     //recupera todos os topicos do banco

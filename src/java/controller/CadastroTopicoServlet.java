@@ -31,18 +31,20 @@ public class CadastroTopicoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        //TODO: Pode-se passar como atributo o tópico..
         int id = Integer.parseInt(request.getParameter("id"));
         TratadorTopico topicoManager = new TratadorTopico();
         Topico t = topicoManager.recuperar(id);
-        request.setAttribute("titulo", t.getTitulo());
-        request.setAttribute("conteudo", t.getConteudo());
-        request.setAttribute("login", t.getLogin());
+        request.getSession().setAttribute("topicoAtual", t);
+        //request.setAttribute("topicoId", t.getId());
+        //request.setAttribute("conteudo", t.getConteudo());
+        //request.setAttribute("login", t.getLogin());
         
         request.getRequestDispatcher("exibeTopico.jsp").forward(request, response);
   
     }
 
+    /*CADASTRA UM TOPICO*/
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

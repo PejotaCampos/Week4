@@ -103,6 +103,48 @@ public class BancoDeDados {
 			e.printStackTrace();
             }
 	}
+        
+        public static void criarComentarios(){
+		try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
+				"postgres", "postgres")){
+			
+		String script = "CREATE SEQUENCE comentario_id_comentario_seq" +
+                                "  INCREMENT 1" +
+                                "  MINVALUE 1" +
+                                "  MAXVALUE 9223372036854775807" +
+                                "  START 1" +
+                                "  CACHE 1;" +
+                                "CREATE TABLE public.comentario" +
+                                "(" +
+                                "  id_comentario integer NOT NULL DEFAULT nextval('comentario_id_comentario_seq'::regclass)," +
+                                "  comentario text," +
+                                "  login text," +
+                                "  id_topico integer," +
+                                "  CONSTRAINT comentario_pkey PRIMARY KEY (id_comentario)," +
+                                "  CONSTRAINT comentario_id_topico_fkey FOREIGN KEY (id_topico)" +
+                                "      REFERENCES topico (id_topico) MATCH SIMPLE" +
+                                "      ON UPDATE NO ACTION ON DELETE NO ACTION," +
+                                "  CONSTRAINT comentario_login_fkey FOREIGN KEY (login)" +
+                                "      REFERENCES usuario (login) MATCH SIMPLE" +
+                                "      ON UPDATE NO ACTION ON DELETE NO ACTION" +
+                                ")";
+					
+			System.out.println(script);
+			boolean criada = existeTabelaC();
+			
+			Statement stm = connection.createStatement();
+			if(!criada){
+				stm.execute(script);
+				System.out.println("Tabela Comentarios criada.");
+			}else{
+				System.out.println("Tabela Comentarios já existe.");
+			}
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 	
 	//Método que verifica se a tabela usuário já existe.
 	private static boolean existeTabela(){
@@ -133,6 +175,27 @@ public class BancoDeDados {
 			
 			DatabaseMetaData dbm = connection.getMetaData();
 			ResultSet table = dbm.getTables(null, null, "topico", null);
+			if (table.next()) {
+				return true;
+			}else {
+				return false;
+			}
+						
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return false;
+		
+	}
+        
+        private static boolean existeTabelaC(){
+		
+		try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
+				"postgres", "postgres")){
+			
+			DatabaseMetaData dbm = connection.getMetaData();
+			ResultSet table = dbm.getTables(null, null, "comentario", null);
 			if (table.next()) {
 				return true;
 			}else {

@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Pedro
@@ -13,11 +16,13 @@ public class Topico {
 
     private String titulo, conteudo, login;
     private int id;
+    //private List<Comentario> comentarios;
 
     public Topico(String titulo, String conteudo, String login) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.login = login;
+      //  this.comentarios = new ArrayList<>();
     }
 
     public String getTitulo() {
@@ -51,7 +56,15 @@ public class Topico {
     public void setId(int id) {
         this.id = id;
     }
-
+    
+//    public void addComent(Comentario c){
+//        this.comentarios.add(c);
+//    }
+//
+//    public List<Comentario> getComentarios() {
+//        return comentarios;
+//    }
+        
     @Override
     public String toString() {
         return "Topico{" + "titulo=" + titulo + ", conteudo=" + conteudo + ", login=" + login + ", id=" + id + '}';
