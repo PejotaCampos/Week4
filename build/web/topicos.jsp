@@ -14,12 +14,20 @@
     </head>
     <body>
         <h1>Bem vindo ${dadosUsuario.nome}</h1>
-        
-        <ul>
+        <table border="1" width="500">
+            <tr>
+                <td width="238"><b>TÍTULO</b></td>
+                <td width="262"><b>LOGIN</b></td>
+            </tr>
+        </table>
+        <table border="1" width="500">
             <c:forEach var="topico" items= "${topicos}" >
-                <li><a href="CadastroTopicoServlet?id=${topico.id}" >${topico.titulo} </a> </li>
+                <tr width="250">
+                    <td><a href="CadastroTopicoServlet?id=${topico.id}" >${topico.titulo} </a> </td>
+                    <td>${topico.login}</td>
+                </tr>
             </c:forEach>
-        </ul>
+        </table>
         
         <form action="CadastroServlet" method="GET">
             <input type="submit" name="addTopico" value="Adicionar">
