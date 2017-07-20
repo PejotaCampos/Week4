@@ -16,21 +16,23 @@
         <h1>Bem vindo ${dadosUsuario.nome}</h1>
         <table border="1" width="500">
             <tr>
-                <td width="238"><b>TÍTULO</b></td>
-                <td width="262"><b>LOGIN</b></td>
+                <td width="262"><b>TÍTULO</b></td>
+                <td width="248"><b>LOGIN</b></td>
             </tr>
-        </table>
-        <table border="1" width="500">
             <c:forEach var="topico" items= "${topicos}" >
-                <tr width="250">
-                    <td><a href="CadastroTopicoServlet?id=${topico.id}" >${topico.titulo} </a> </td>
-                    <td>${topico.login}</td>
+                <tr>
+                    <td width="262"><a href="CadastroTopicoServlet?id=${topico.id}" >${topico.titulo} </a> </td>
+                    <td width="248">${topico.login}</td>
                 </tr>
             </c:forEach>
         </table>
         
         <form action="CadastroServlet" method="GET">
             <input type="submit" name="addTopico" value="Adicionar">
+        </form>
+        
+        <form action="RankingServlet" method="POST">
+            <input type="submit" name="ranking" value="Ranking">
         </form>
     </body>
 </html>

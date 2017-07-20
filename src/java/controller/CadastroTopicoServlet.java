@@ -15,6 +15,7 @@ import model.Topico;
 import model.Usuario;
 import tratador.TratadorComentario;
 import tratador.TratadorTopico;
+import tratador.TratadorUsuario;
 
 /**
  *
@@ -25,6 +26,7 @@ public class CadastroTopicoServlet extends HttpServlet {
 
     private final TratadorTopico topicoManager = new TratadorTopico();
     private final TratadorComentario comentarioManager = new TratadorComentario();
+    private final TratadorUsuario userManager = new TratadorUsuario();
   
     /*NAVEGA ATÉ A PAGINA EXIBIR TOPICOS*/
     @Override
@@ -50,6 +52,7 @@ public class CadastroTopicoServlet extends HttpServlet {
         
         Topico t = new Topico(titulo, conteudo, login);
         topicoManager.cadastraTopico(t);
+        userManager.addPonto(login, 10);
         request.getServletContext().setAttribute("topicos", topicoManager.topicos());
         request.getRequestDispatcher("topicos.jsp").forward(request, response);
     }

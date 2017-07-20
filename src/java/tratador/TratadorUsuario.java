@@ -8,6 +8,7 @@ package tratador;
 import model.BancoDeDados;
 import model.Usuario;
 import dao.UsuarioDAOImpl;
+import java.util.List;
 
 /**
  *
@@ -53,6 +54,16 @@ public class TratadorUsuario {
         }
         System.out.println("USER existe: "+login);
         return true; //usuario existe e NÃO deve ser adicionado no banco
+    }
+    
+    public List<Usuario> ranking(){
+        UsuarioDAOImpl userDAO = new UsuarioDAOImpl();
+        return userDAO.ranking();
+    }
+    
+    public void addPonto(String login, int pontos){
+        UsuarioDAOImpl userDAO = new UsuarioDAOImpl();
+        userDAO.adicionarPontos(login, pontos);
     }
     
 }

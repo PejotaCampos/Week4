@@ -17,6 +17,7 @@ import model.Comentario;
 import model.Topico;
 import model.Usuario;
 import tratador.TratadorComentario;
+import tratador.TratadorUsuario;
 
 /**
  *
@@ -24,13 +25,15 @@ import tratador.TratadorComentario;
  */
 @WebServlet(name = "ComentarioServlet", urlPatterns = {"/ComentarioServlet"})
 public class ComentarioServlet extends HttpServlet {
-
     
+    private final TratadorUsuario userManager = new TratadorUsuario();
+
+    /*ESTA NA TELA DO TOPICO COM COMENTARIOS E VOLTA PARA A LISTA DE TOPICOS*/
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        request.getRequestDispatcher("topicos.jsp").forward(request, response);
         
     }
 
@@ -40,10 +43,10 @@ public class ComentarioServlet extends HttpServlet {
             throws ServletException, IOException {
         String comentario = request.getParameter("textoComentado");
         Topico t = (Topico) request.getSession().getAttribute("topicoAtual");
-        System.out.println("Login: "+t.getLogin()+"\ncomentario: "+comentario);
         TratadorComentario comentarioManager = new TratadorComentario();
         Usuario u = (Usuario)request.getSession().getAttribute("dadosUsuario");
         comentarioManager.inserir(u.getLogin(), comentario, t.getId());
+        userManager.addPonto(u.getLogin(), 3);
         request.getSession().setAttribute("comentariosAtuais", comentarioManager.comentarios(t.getId()));
         request.getRequestDispatcher("exibeTopico.jsp").forward(request, response);
     }

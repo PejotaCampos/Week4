@@ -13,8 +13,15 @@
     </head>
     <body>
         <form method="POST" action="CadastroTopicoServlet">
-            Titulo: <input type="text" name="titulo" />
-            Conteudo: <input type="text" size="600" name="conteudo" />
+            <table border="3" id="topico">
+                <tr>
+                    <td width="890" height="20"><input type="text" name="titulo" title="Título" size="123" placeholder="Título"/></td>                    
+                </tr>
+                <tr>
+                    <td width="890" height="350"><textarea name="conteudo" rows="25" cols="124" placeholder="Digite aqui..."></textarea></td>
+                </tr>                
+            </table>
+            
             <input type="submit" name="cadastrarTopico" value="Ok" />
         </form>
     </body>

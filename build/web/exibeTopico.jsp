@@ -41,6 +41,8 @@
             <textarea rows="4" cols="120" title="Comentário..." name="textoComentado"></textarea>
             <input type="submit" name="comentar" value="Enviar" />
         </form>
+                
+                <a href="ComentarioServlet">Voltar aos topicos</a>
         
     </body>
 </html>
