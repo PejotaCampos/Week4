@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Insira os dados abaixo: </h1>
-        <form method="POST" action="CadastroServlet">
+        <form method="POST" action="cadastro">
             Login: <input type="text" name="login" />
             Senha: <input type="password" name="senha" />
             Nome: <input type="text" name="nome" />

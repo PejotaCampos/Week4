@@ -21,7 +21,7 @@ import tratador.TratadorUsuario;
  *
  * @author Pedro
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
     

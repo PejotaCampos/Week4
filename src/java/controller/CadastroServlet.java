@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,15 +12,17 @@ import tratador.TratadorUsuario;
  *
  * @author Pedro
  */
-@WebServlet(name = "CadastroServlet", urlPatterns = {"/CadastroServlet"})
+@WebServlet(name = "CadastroServlet", urlPatterns = {"/cadastro"})
 public class CadastroServlet extends HttpServlet {
 
+    //ESTA NA TELA DE LISTA TOPICOS E VAI PARA TELA DE ADD TOPICO
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("cadastroTopico.jsp").forward(request, response);
     }
 
+    //TELA DE CADASTRO DE USUARIO, VAI PARA A TELA INICIAL (LOGIN)
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

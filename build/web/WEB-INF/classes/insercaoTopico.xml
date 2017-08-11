@@ -1,0 +1,6 @@
+<dataset>
+    <USUARIO LOGIN="maria" EMAIL="maria@email.com" NOME="maria" SENHA="asd" PONTOS="13"/>
+    <TOPICO id_topico="1" TITULO="teste" CONTEUDO="teste" LOGIN="maria"/>
+    <TOPICO id_topico="2" TITULO="Novo topico" CONTEUDO="teste inserir topico" LOGIN="maria"/>
+    <COMENTARIO COMENTARIO="primeiro comentario no topico de maria" LOGIN="maria" ID_TOPICO="1" />
+</dataset>

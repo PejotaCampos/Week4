@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
@@ -24,7 +19,7 @@ public class ComentarioDAOImpl implements ComentarioDAO{
     public void inserir(Comentario c) {
         try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
 				"postgres", "postgres")){
-			
+
 			String sql = "INSERT INTO public.comentario (comentario, login, id_topico) "+
 			"VALUES(?, ?, ?)";
 								
@@ -34,7 +29,6 @@ public class ComentarioDAOImpl implements ComentarioDAO{
 			stm.setString(2, c.getLogin());
 			stm.setInt(3, c.getId_topico());
 			stm.executeUpdate();
-			System.out.println("Comentario inserido.");
 						
 		}catch(SQLException e){
 			throw new RuntimeException("Erro: " + e.getMessage());
@@ -43,9 +37,11 @@ public class ComentarioDAOImpl implements ComentarioDAO{
 
     @Override
     public List<Comentario> recuperar(int id_topico) {
+        
         List<Comentario> comentarios = new ArrayList<>();
         String sql = "SELECT * FROM public.comentario WHERE id_topico = ?"+
 			"ORDER BY id_comentario";
+        
         try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
 				"postgres", "postgres")){
 								

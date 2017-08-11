@@ -12,7 +12,7 @@
         <title>Adicionar tópico</title>
     </head>
     <body>
-        <form method="POST" action="CadastroTopicoServlet">
+        <form method="POST" action="topicos">
             <table border="3" id="topico">
                 <tr>
                     <td width="890" height="20"><input type="text" name="titulo" title="Título" size="123" placeholder="Título"/></td>                    

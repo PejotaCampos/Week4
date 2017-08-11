@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
@@ -34,7 +29,6 @@ public class TopicoDAOImpl implements TopicoDAO{
 			stm.setString(2, t.getConteudo());
 			stm.setString(3, t.getLogin());
 			stm.executeUpdate();
-			System.out.println("Topico inserido.");
 						
 		}catch(SQLException e){
 			throw new RuntimeException("Erro: " + e.getMessage());
@@ -43,8 +37,10 @@ public class TopicoDAOImpl implements TopicoDAO{
 
     @Override
     public Topico recuperar(int id) {
+        
         String sql = "SELECT * FROM topico WHERE id_topico = ?";
         Topico t = null;
+        
         try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
 				"postgres", "postgres")){
 			
@@ -66,8 +62,10 @@ public class TopicoDAOImpl implements TopicoDAO{
 
     @Override
     public List<Topico> topicos() {
+        
         List<Topico> listaOrdenada = new ArrayList<>();
 	String sql = "SELECT * FROM topico;";
+        
 	try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
 				"postgres", "postgres")){
 			
@@ -84,8 +82,6 @@ public class TopicoDAOImpl implements TopicoDAO{
             }catch(SQLException e){
 		throw new RuntimeException("Erro: " + e.getMessage());
             }
-        System.out.println("LISTA TOPICOS: ");
-        listaOrdenada.forEach(System.out::println);
         
 	return listaOrdenada;
     }

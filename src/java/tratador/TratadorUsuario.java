@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tratador;
 
 import model.BancoDeDados;
@@ -12,13 +7,13 @@ import java.util.List;
 
 /**
  *
- * @author Pedro
+ *CLASSE INTERMEDIARIA ENTRA BD E CONTROLE
  */
 public class TratadorUsuario {
     
     public void cadastra(String login, String senha, String nome, String email){
         
-        BancoDeDados.criarTabela();
+        BancoDeDados.initialize();
         
         if(! this.userExists(login)){       
             
@@ -31,7 +26,7 @@ public class TratadorUsuario {
     
     public Usuario autenticar(String login, String senha){
         
-        BancoDeDados.criarTabela();
+        BancoDeDados.initialize();
         
         UsuarioDAOImpl userDAO = new UsuarioDAOImpl();
         System.out.println("Autenticando: "+login);

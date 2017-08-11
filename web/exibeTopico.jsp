@@ -13,7 +13,7 @@
         <title>Topico</title>
     </head>
     <body>
-        <form action="ComentarioServlet" method="POST">
+        <form action="exibeTopico" method="POST">
             
             <table border="3" id="topico">
                 <tr>
@@ -26,23 +26,26 @@
                     <td width="890" height="350">Conteudo do topico: ${topicoAtual.conteudo}</td>
                 </tr>                
             </table>
-                        
-                <h6>Comments</h6>
+           
+           <div style="position: relative; top: 20px">
             <table border="3" id="tbComents">
+                <thead><th>Comentários</th></thead>
                 <c:forEach var="comentario" items= "${comentariosAtuais}" >
                 <tr>
-                    <td><textarea rows="4" cols="60">${comentario.login} escreveu: </textarea></td>
-                    <td><textarea rows="4" cols="60">${comentario.comentario}</textarea></td>
+                    <td><b>${comentario.login} escreveu:</b> ${comentario.comentario}</td>
                 </tr>
                 </c:forEach>
             </table>
+           </div>
              
-                <h6> Inserir Comentário </h6>
+            <div style="position: relative; top: 15px">
+                <h4> Inserir Comentário </h4>
+            </div>
             <textarea rows="4" cols="120" title="Comentário..." name="textoComentado"></textarea>
             <input type="submit" name="comentar" value="Enviar" />
         </form>
                 
-                <a href="ComentarioServlet">Voltar aos topicos</a>
+                <a href="topicos">Voltar aos topicos</a>
         
     </body>
 </html>

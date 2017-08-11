@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.util.ArrayList;
@@ -16,13 +11,11 @@ public class Topico {
 
     private String titulo, conteudo, login;
     private int id;
-    //private List<Comentario> comentarios;
 
     public Topico(String titulo, String conteudo, String login) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.login = login;
-      //  this.comentarios = new ArrayList<>();
     }
 
     public String getTitulo() {
@@ -56,14 +49,6 @@ public class Topico {
     public void setId(int id) {
         this.id = id;
     }
-    
-//    public void addComent(Comentario c){
-//        this.comentarios.add(c);
-//    }
-//
-//    public List<Comentario> getComentarios() {
-//        return comentarios;
-//    }
         
     @Override
     public String toString() {

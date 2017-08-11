@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +13,7 @@ import java.sql.Statement;
  * @author Pedro
  */
 /*
- * Classe responsável por carregar o driver do postgres e criar a tabela do banco.
+ * Classe responsável por carregar o driver do postgres e criar as tabelas do banco.
  * Considerando que já existe um database local chamado coursera.*/
 
 public class BancoDeDados {
@@ -31,8 +27,14 @@ public class BancoDeDados {
 		}
 	}
 	
+        public static void initialize(){
+            criarTabela();
+            criarTopicos();
+            criarComentarios();
+        }
+        
 	//Se a tabela 'usuario' não existe, então esse método a cria.
-	public static void criarTabela(){
+	private static void criarTabela(){
 		try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
 				"postgres", "postgres")){
 			
@@ -63,7 +65,7 @@ public class BancoDeDados {
 		}
 	}
         
-        public static void criarTopicos(){
+        private static void criarTopicos(){
             try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
 				"postgres", "postgres")){
 			
@@ -100,11 +102,12 @@ public class BancoDeDados {
 			
 			
             }catch(SQLException e){
-			e.printStackTrace();
+		throw new RuntimeException("Erro: " + e.getMessage());
             }
 	}
         
-        public static void criarComentarios(){
+        private static void criarComentarios(){
+            
 		try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
 				"postgres", "postgres")){
 			
@@ -142,7 +145,7 @@ public class BancoDeDados {
 			
 			
 		}catch(SQLException e){
-			e.printStackTrace();
+                    throw new RuntimeException("Erro: " + e.getMessage());
 		}
 	}
 	
@@ -209,6 +212,32 @@ public class BancoDeDados {
 		return false;
 		
 	}
+        
+    public static void delete(){
+        String deleteComents = "DROP TABLE public.comentario";
+        String deleteTopico = "DROP TABLE public.topico";
+        String deleteUsuario = "DROP TABLE public.usuario";
+        String deleteSeqComents = "DROP SEQUENCE public.comentario_id_comentario_seq";
+        String deleteSeqTopicos = "DROP SEQUENCE public.topico_id_topico_seq";
+        
+	try( Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/coursera",
+				"postgres", "postgres")){	
+            PreparedStatement stm = connection.prepareStatement(deleteComents);
+            stm.executeUpdate();
+            stm = connection.prepareStatement(deleteTopico);
+            stm.executeUpdate();
+            stm = connection.prepareStatement(deleteUsuario);
+            stm.executeUpdate();
+            
+            stm = connection.prepareStatement(deleteSeqComents);
+            stm.executeUpdate();
+            
+            stm = connection.prepareStatement(deleteSeqTopicos);
+            stm.executeUpdate();
+	}catch(SQLException e){
+            throw new RuntimeException("Erro: " + e.getMessage());
+	}
+    }
 
 }
 

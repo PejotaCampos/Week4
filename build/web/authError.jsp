@@ -12,14 +12,14 @@
         <title>Error</title>
     </head>
     <body>
-        <form method="POST" action="LoginServlet">
+        <form method="POST" action="login">
             <h1>Entre com as informações abaixo.</h1>
             Login: <input type="text" name="login" />
             Senha: <input type="password" name="senha" />
             <input type="submit" name="logar" value="Ok" />
         </form>
         <h3 style="color: red">${erro}</h3>
-        <form method="GET" action="LoginServlet">
+        <form method="GET" action="login">
             <input type="submit" name="cadastro" value="Cadastrar" />
         </form>
     </body>

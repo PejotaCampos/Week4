@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 /**
@@ -40,9 +35,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 			stm.setString(3, u.getNome());
 			stm.setString(4, u.getSenha());
 			stm.setInt(5, u.getPontos());
-			stm.executeUpdate();
-			System.out.println("Usuario "+u.getNome()+" inserido.");
-						
+			stm.executeUpdate();						
 		}catch(SQLException e){
 			throw new RuntimeException("Erro: " + e.getMessage());
 		}

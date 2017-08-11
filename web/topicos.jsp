@@ -11,28 +11,40 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Topicos</title>
+        
+        <style>
+            table, td, th {border: 2px solid black ; padding: 10px}
+            .center {text-align: center }
+        </style>
+        
     </head>
     <body>
         <h1>Bem vindo ${dadosUsuario.nome}</h1>
+        
         <table border="1" width="500">
-            <tr>
-                <td width="262"><b>TÍTULO</b></td>
-                <td width="248"><b>LOGIN</b></td>
-            </tr>
-            <c:forEach var="topico" items= "${topicos}" >
+            <thead> <th><b>TÍTULO</b></th> <th><b>LOGIN</b></th> </thead>
+        
+            <tbody>
+                <c:forEach var="topico" items= "${topicos}" >
                 <tr>
-                    <td width="262"><a href="CadastroTopicoServlet?id=${topico.id}" >${topico.titulo} </a> </td>
-                    <td width="248">${topico.login}</td>
+                    <td width="262"><a href="exibeTopico?id=${topico.id}" >${topico.titulo} </a> </td>
+                    <td width="248" class="center">${topico.login}</td>
                 </tr>
-            </c:forEach>
+                </c:forEach>
+            </tbody>
+            
         </table>
         
-        <form action="CadastroServlet" method="GET">
+        <div style="position: relative; top:10px">
+        <form action="cadastro" method="GET">
             <input type="submit" name="addTopico" value="Adicionar">
         </form>
+        </div>
         
-        <form action="RankingServlet" method="POST">
+        <div style="position: relative; top: -11px ; left: 150px">
+        <form action="ranking" method="POST">
             <input type="submit" name="ranking" value="Ranking">
         </form>
+        </div>
     </body>
 </html>

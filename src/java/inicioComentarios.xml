@@ -1,0 +1,10 @@
+<dataset>
+    <USUARIO LOGIN="maria" EMAIL="maria@email.com" NOME="maria" SENHA="asd" PONTOS="13"/>
+    <TOPICO id_topico="1" TITULO="teste" CONTEUDO="teste" LOGIN="maria"/>
+    <TOPICO id_topico="2" TITULO="teste2" CONTEUDO="teste2" LOGIN="maria"/>
+    <COMENTARIO id_comentario="1" COMENTARIO="primeiro comentario no topico 1" LOGIN="maria" ID_TOPICO="1" />
+    <COMENTARIO id_comentario="2" COMENTARIO="primeiro comentario no topico 2" LOGIN="maria" ID_TOPICO="2" />
+    <COMENTARIO id_comentario="3" COMENTARIO="segundo comentario no topico 2" LOGIN="maria" ID_TOPICO="2" />
+    <COMENTARIO id_comentario="4" COMENTARIO="terceiro comentario no topico 2" LOGIN="maria" ID_TOPICO="2" />
+    <COMENTARIO id_comentario="5" COMENTARIO="segundo comentario no topico 1" LOGIN="maria" ID_TOPICO="1" />
+</dataset>

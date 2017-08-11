@@ -25,6 +25,6 @@
         </c:forEach>
     </table>
     
-    <a href="ComentarioServlet">Voltar aos topicos</a>
+    <a href="topicos">Voltar aos topicos</a>
     
 </html>
