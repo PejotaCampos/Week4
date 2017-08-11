@@ -13,12 +13,14 @@
         <title>Topicos</title>
         
         <style>
-            table, td, th {border: 2px solid black ; padding: 10px}
+            table, td, th {border: 2px solid black ; padding: 10px; background: seagreen}
+            td {background: lightskyblue}
             .center {text-align: center }
+            .btStyle {background: lightblue ; border-color: black}
         </style>
         
     </head>
-    <body>
+    <body style="background: grey">
         <h1>Bem vindo ${dadosUsuario.nome}</h1>
         
         <table border="1" width="500">
@@ -37,13 +39,13 @@
         
         <div style="position: relative; top:10px">
         <form action="cadastro" method="GET">
-            <input type="submit" name="addTopico" value="Adicionar">
+            <input type="submit" name="addTopico" value="Adicionar" class="btStyle">
         </form>
         </div>
         
         <div style="position: relative; top: -11px ; left: 150px">
         <form action="ranking" method="POST">
-            <input type="submit" name="ranking" value="Ranking">
+            <input type="submit" name="ranking" value="Ranking" class="btStyle">
         </form>
         </div>
     </body>

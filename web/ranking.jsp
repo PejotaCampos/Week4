@@ -11,20 +11,36 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ranking</title>
+        
+        <style>
+            table, td, th {border: 2px solid black ; padding: 10px; background: seagreen}
+            td {background: lightskyblue ; text-align: center}
+            .center {text-align: center }
+            .btStyle {background: lightblue ; border-color: black}
+        </style>
+        
     </head>
+    
+    <body style="background: grey">
+        
     <c:set var="pos" value="1" />
     <table title="RAKING" border="1" >
-        <tr>
-                <td>POSICAO</td> <td>LOGIN</td>   <td>PONTUACAO</td>   
-        </tr>
+        
+        <thead>
+            <th>POSICAO</th> <th>LOGIN</th>   <th>PONTUACAO</th>   
+        </thead>
+        
+        <tbody>
         <c:forEach var="user" items= "${ranking}" >
             <tr>
                  <td>${pos}</td> <td>${user.login}</td>   <td>${user.pontos} Pts</td>  
             </tr>
             <c:set var="pos" value="${pos+1}"/>
         </c:forEach>
+        </tbody>
     </table>
     
     <a href="topicos">Voltar aos topicos</a>
     
+    </body>    
 </html>

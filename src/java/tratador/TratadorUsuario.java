@@ -31,10 +31,8 @@ public class TratadorUsuario {
         UsuarioDAOImpl userDAO = new UsuarioDAOImpl();
         System.out.println("Autenticando: "+login);
         if(this.userExists(login)){
-            System.out.println("IF Autenticando: "+login);
-            return userDAO.recuperar(login);
+            return (userDAO.recuperar(login).getSenha().equals(senha)) ? userDAO.recuperar(login) : null ;
         }else{
-            System.out.println("ELSE Autenticando: "+login);
             return null;
         }            
     }
@@ -42,7 +40,7 @@ public class TratadorUsuario {
     private boolean userExists(String login){
         UsuarioDAOImpl userDAO = new UsuarioDAOImpl();
         System.out.println("USER EXIST: "+login);
-        //Usuario recuperado = userDAO.recuperar(login);
+        
         if(userDAO.recuperar(login).getLogin().isEmpty()){
             System.out.println("IF que deve retornar falso (user nao existe): "+login);
             return false; //usuario não existe e deve ser adicionado no banco

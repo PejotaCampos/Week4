@@ -11,8 +11,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Topico</title>
+        <style>
+            table, td, th {border: 2px solid black ; padding: 10px; background: seagreen}
+            td {background: lightskyblue}
+            .btStyle {background: lightblue ; border-color: black}
+        </style>
     </head>
-    <body>
+    <body style="background: grey">
         <form action="exibeTopico" method="POST">
             
             <table border="3" id="topico">
@@ -42,7 +47,7 @@
                 <h4> Inserir Comentário </h4>
             </div>
             <textarea rows="4" cols="120" title="Comentário..." name="textoComentado"></textarea>
-            <input type="submit" name="comentar" value="Enviar" />
+            <input type="submit" name="comentar" value="Enviar" class="btStyle" />
         </form>
                 
                 <a href="topicos">Voltar aos topicos</a>
